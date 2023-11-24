@@ -1,10 +1,10 @@
-var TITLE = 'Hartford School District is No Longer Largest in Connecticut';
+var TITLE = 'Y Universe Awards 2023 Best Series Tumblr Poll';
 
 // x-axis label and label in tooltip
-var X_AXIS = 'Academic Year';
+var X_AXIS = 'Date';
 
 // y-axis label and label in tooltip
-var Y_AXIS = 'Number of Students'; 
+var Y_AXIS = 'Votes'; 
 
 // Should y-axis start from 0? `true` or `false`
 var BEGIN_AT_ZERO = false;
