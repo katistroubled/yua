@@ -51,7 +51,7 @@ $(document).ready(function() {
         title: {
           display: true,
           text: TITLE,
-          fontSize: 14,
+          fontSize: 16,
         },
         legend: {
           display: SHOW_LEGEND,
