@@ -1,4 +1,4 @@
-var TITLE = 'Y Universe Awards 2023 Best Series Tumblr Poll';
+var TITLE = 'Best Series';
 
 // x-axis label and label in tooltip
 var X_AXIS = 'Date';
