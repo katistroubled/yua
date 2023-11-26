@@ -1,4 +1,4 @@
-var TITLE = 'Best Series';
+var TITLE1 = 'Best Series';
 
 // x-axis label and label in tooltip
 var X_AXIS = 'Date';
@@ -50,7 +50,7 @@ $(document).ready(function() {
       options: {
         title: {
           display: true,
-          text: TITLE,
+          text: TITLE1,
           fontSize: 16,
         },
         legend: {
@@ -115,13 +115,15 @@ $(document).ready(function() {
 
   });
 
+var TITLE2 = 'Outstanding Supporting Actor';
+ 
    $.get('./data2.csv', {'_': $.now()}, function(csvString) {
 
     var data2 = Papa.parse(csvString).data;
-    var timeLabels2 = data.slice(1).map(function(row) { return row[0]; });
+    var timeLabels2 = data2.slice(1).map(function(row) { return row[0]; });
 
     var datasets2 = [];
-    for (var i = 1; i < data[0].length; i++) {
+    for (var i = 1; i < data2[0].length; i++) {
       datasets2.push(
         {
           label: data2[0][i], // column name
@@ -145,7 +147,7 @@ $(document).ready(function() {
       options: {
         title: {
           display: true,
-          text: TITLE,
+          text: TITLE2,
           fontSize: 16,
         },
         legend: {
