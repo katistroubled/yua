@@ -115,31 +115,31 @@ $(document).ready(function() {
 
   });
 
-   $.get('./data.csv', {'_': $.now()}, function(csvString) {
+   $.get('./data2.csv', {'_': $.now()}, function(csvString) {
 
-    var data = Papa.parse(csvString).data;
-    var timeLabels = data.slice(1).map(function(row) { return row[0]; });
+    var data2 = Papa.parse(csvString).data;
+    var timeLabels2 = data.slice(1).map(function(row) { return row[0]; });
 
-    var datasets = [];
+    var datasets2 = [];
     for (var i = 1; i < data[0].length; i++) {
-      datasets.push(
+      datasets2.push(
         {
-          label: data[0][i], // column name
-          data: data.slice(1).map(function(row) {return row[i]}), // data in that column
+          label: data2[0][i], // column name
+          data: data2.slice(1).map(function(row) {return row[i]}), // data in that column
           fill: false // `true` for area charts, `false` for regular line charts
         }
       )
     }
 
     // Get container for the chart
-    var ctx = document.getElementById('chart-container').getContext('2d');
+    var ctx2 = document.getElementById('chart-container2').getContext('2d');
 
-    new Chart(ctx, {
+    new Chart(ctx2, {
       type: 'line',
 
       data: {
-        labels: timeLabels,
-        datasets: datasets,
+        labels: timeLabels2,
+        datasets: datasets2,
       },
       
       options: {
