@@ -212,4 +212,102 @@ var TITLE2 = 'Outstanding Supporting Actor';
 
   });
 
+var TITLE3 = 'Outstanding Leading Actor';
+ 
+   $.get('./data3.csv', {'_': $.now()}, function(csvString) {
+
+    var data3 = Papa.parse(csvString).data;
+    var timeLabels3 = data3.slice(1).map(function(row) { return row[0]; });
+
+    var datasets3 = [];
+    for (var i = 1; i < data3[0].length; i++) {
+      datasets3.push(
+        {
+          label: data3[0][i], // column name
+          data: data3.slice(1).map(function(row) {return row[i]}), // data in that column
+          fill: false // `true` for area charts, `false` for regular line charts
+        }
+      )
+    }
+
+    // Get container for the chart
+    var ctx3 = document.getElementById('chart-container3').getContext('2d');
+
+    new Chart(ctx3, {
+      type: 'line',
+
+      data: {
+        labels: timeLabels3,
+        datasets: datasets3,
+      },
+      
+      options: {
+        title: {
+          display: true,
+          text: TITLE3,
+          fontSize: 16,
+        },
+        legend: {
+          display: SHOW_LEGEND,
+        },
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: X_AXIS !== '',
+              labelString: X_AXIS
+            },
+            gridLines: {
+              display: SHOW_GRID,
+            },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                return value.toLocaleString();
+              }
+            }
+          }],
+          yAxes: [{
+            stacked: false, // `true` for stacked area chart, `false` otherwise
+            beginAtZero: true,
+            scaleLabel: {
+              display: Y_AXIS !== '',
+              labelString: Y_AXIS
+            },
+            gridLines: {
+              display: SHOW_GRID,
+            },
+            ticks: {
+              maxTicksLimit: 10,
+              beginAtZero: BEGIN_AT_ZERO,
+              callback: function(value, index, values) {
+                return value.toLocaleString()
+              }
+            }
+          }]
+        },
+        tooltips: {
+          displayColors: false,
+          callbacks: {
+            label: function(tooltipItem, all) {
+              return all.datasets[tooltipItem.datasetIndex].label
+                + ': ' + tooltipItem.yLabel.toLocaleString();
+            }
+          }
+        },
+        plugins: {
+          colorschemes: {
+            /*
+              Replace below with any other scheme from
+              https://nagix.github.io/chartjs-plugin-colorschemes/colorchart.html
+            */
+            scheme: 'brewer.DarkTwo5'
+          }
+        }
+      }
+    });
+
+  });
+
+ 
 });
